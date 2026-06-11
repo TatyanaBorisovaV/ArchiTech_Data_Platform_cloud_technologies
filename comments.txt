@@ -1,0 +1,30 @@
+Доброго времени суток!
+
+Есть вопросы:
+
+1) Не могу найти проблему в DDS слое даже по логам:
+DDS читает сообщения из stg-service-orders и обрабатывает их:
+INFO in dds_message_processor_job: RECEIVED MESSAGE: {...}
+Но дальше нет ни одного сообщения вида:
+PRODUCED MESSAGE
+SENT MESSAGE
+DELIVERED
+
+И одновременно consumer DDS стоит на конце топика:
+Topic stg-service-orders [0]
+MaxOffset 3564
+LSO 3564
+MessageSet size 0
+Fetch topic stg-service-orders at offset 3564
+
+То есть DDS дочитал все сообщения из STG и ждёт новые.
+Почему не срабатывает Producer и не записывает сообщения в dds топик Кафки и в Постгрес?
+
+
+2) у нас в проекте 2 сервиса. Деплои делала из отдельных папок DDS и CDM где лежат dockerfile.
+Получается docker-compose и .env вообще при сборке не участвовали? 
+Или можно собирать образы из общей директории, где лежит docker-compose (C:\Dev\de-start-sprint-cloud-technologies\solution)? 
+
+
+3) В коде изменила число реплик по 1 на каждый сервис, так как лимит всего 3 пода. 
+Хотя на каждый сервис было написано по 3 реплики.
